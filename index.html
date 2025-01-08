@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            min-height: 100vh;
+            background: linear-gradient(45deg, rgb(130, 42, 206),rgb(70, 218, 159));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container > span{
+            display: none;
+        }
+        .container h1{
+            display: none;
+        }
+        .timer{
+           min-width: 24%;
+            min-height: 15vh;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 1em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+           /* filter: blur(0.5px);*/
+           box-shadow: 0px 0px 15px rgb(0, 0, 0);
+           cursor: pointer; 
+           padding: 0px 20px;
+          
+
+        }
+        
+        span{
+            font-size: 3em;
+            font-weight: 600;
+           
+        }
+        @media(max-width:450px){
+            .container{
+                padding-top: 20vh;
+                justify-content: start;
+                flex-direction: column;
+                gap: 3em;
+            }
+            .container >span{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+            }
+            .container h1{
+                display: inline;
+                font-size: 1.5em;
+                font-weight: 600;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+        }
+        @media(max-width:310px){
+           
+            span{
+                font-size: 2.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span>
+            <svg xmlns="http://www.w3.org/2000/svg" height="68px" viewBox="0 -960 960 960" width="68px" fill="#000000"><path d="m627-287 45-45-159-160v-201h-60v225l174 181ZM480-80q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-82 31.5-155t86-127.5Q252-817 325-848.5T480-880q82 0 155 31.5t127.5 86Q817-708 848.5-635T880-480q0 82-31.5 155t-86 127.5Q708-143 635-111.5T480-80Zm0-400Zm0 340q140 0 240-100t100-240q0-140-100-240T480-820q-140 0-240 100T140-480q0 140 100 240t240 100Z"/></svg>
+            <h1>Clock</h1></span>
+             
+        <div class="timer">
+            <span class="hour"></span>
+            <span>:</span>
+            <span class="min"></span>
+            <span>:</span>
+            <span class="sec"></span>
+            <!-- <span>:</span> -->
+            <!-- <span class="msec"></span> -->
+
+
+        </div>
+    </div>
+    <script>
+
+        let hour = document.querySelector(".hour");
+        let min = document.querySelector(".min");
+       let  sec = document.querySelector(".sec");
+        const msec = document.querySelector(".msec");
+        const time = new Date();
+        // hour.innerHTML = time.getHours();
+        // min.innerHTML = time.getMinutes();
+        // sec.innerHTML = time.getSeconds();
+        // msec.innerHTML = time.getMilliseconds();
+        setInterval(function(){
+        const time = new Date();
+        hour.innerHTML = (time.getHours()<10?'0':'')+ time.getHours();
+        min.innerHTML = (time.getMinutes()<10?'0':'')+ time.getMinutes();
+        sec.innerHTML = (time.getSeconds()<10?'0':'')+ time.getSeconds();
+        // msec.innerHTML = (time.getMilliseconds()<10?'0':'')+ time.getMilliseconds();
+        },1)
+        
+    </script>
+</body>
+</html>
